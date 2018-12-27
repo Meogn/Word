@@ -49,8 +49,8 @@ public class QueryActivity extends AppCompatActivity {
                 String a = editText.getText().toString();
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 String[] where = {editText.getText().toString()};
-                // Cursor cursor = db.query("WordTable",null,null,null,null,null,null);
-                Cursor cursor = db.query("Book", new String[]{"name"}, "name=?", where, null, null, null);
+//                Cursor cursor = db.query("Book", new String[]{"name"}, "name=?", where, null, null, null);
+                Cursor cursor = db.query("Book", null, "name like '%" + a + "%'", null, null, null, null);
                 if (cursor.moveToFirst()) {
                     do {
                         String word = cursor.getString(cursor.getColumnIndex("name"));
@@ -60,7 +60,7 @@ public class QueryActivity extends AppCompatActivity {
                         querylist.add(word);
 //                        querylist.add(word1);
 //                        querylist.add(word2);
-                        Log.d("QueryActivity","aaa");
+                        Log.d("QueryActivity",word);
                     } while (cursor.moveToNext());
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(QueryActivity.this, R.layout.support_simple_spinner_dropdown_item, querylist);

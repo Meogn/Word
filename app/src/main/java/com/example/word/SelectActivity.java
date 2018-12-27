@@ -31,7 +31,7 @@ public class SelectActivity extends AppCompatActivity {
         Intent intent = getIntent();
         word = intent.getStringExtra("name");
         Log.d("AddActivity",word);
-       Toast.makeText(this,"aaa",Toast.LENGTH_SHORT).show();
+       Toast.makeText(this,word,Toast.LENGTH_SHORT).show();
         wordlist.add(word);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(SelectActivity.this, android.R.layout.simple_list_item_1, wordlist);
         listView = (ListView) findViewById(R.id.list_view);
